@@ -1,0 +1,65 @@
+# build a contact book including functions of searching, adding new contact, deleting contact and exit
+
+contactbook={'zhangsan':[39, 12315], 'lisi':[22,12306], 'wangwu':[34,10020]}
+print(contactbook)
+
+def search_contact ():
+    i=input('enter the name')
+    for name in contactbook:
+        if i==name:
+            print (contactbook[i])
+            not_found=False
+            break
+        else:
+            not_found=True
+    if not_found==True:
+        print('%s is not in the contactbook' %i)
+    return ()
+
+def add_contact():
+    while True:
+        name=input('enter the name: \t')
+        age=int(input('enter the age: \t'))
+        phone=int(input('enter the phone: \t'))
+        content=[age,phone]
+        contactbook.update({name:content})
+        break
+    print ('contact info is added')
+    print('current contactbook',contactbook)
+    return ()
+    
+def del_contact():
+    name_in_contact=False
+    name=input('enter the name you need to delete from contact: \t')
+    for i in contactbook:
+        if i==name:
+            contactbook.pop(name)
+            print ('contact info is deleted')
+            name_in_contact=True
+            break
+    if name_in_contact==False:
+        print('name was not in the contactbook')
+    print('current contactbook',contactbook)
+    return ()
+    
+# start the main program
+while True:
+    i=input ('please enter a number. 1:search 2:add new 3:delete contact 4 exit \n')
+    if i=='1':
+        print('search')
+        search_contact()
+    elif i=='2':
+        print ('add new contact')
+        add_contact ()
+    elif i=='3':
+        print ('delete contact')
+        del_contact()
+    elif i=='4':
+        print ('exit')
+        break
+    else:
+        print ('please choose from the four functions')
+    
+
+    
+
